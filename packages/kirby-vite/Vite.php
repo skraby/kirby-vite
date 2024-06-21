@@ -361,7 +361,8 @@ class Vite {
       // `../vite/legacy-polyfills-legacy`). To handle all cases we just check
       // for the ending.
       if (str_ends_with($key, 'vite/legacy-polyfills-legacy')) {
-        $entry = $key;
+        $entry = $this->manifestProperty($key, try: false);
+        $entry = $this->isDev ? $this->assetDev($entry) : $this->assetProd($entry);
         break;
       }
     }
