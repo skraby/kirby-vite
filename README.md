@@ -1,13 +1,13 @@
 <p align="center">
-  <img src="./.github/logo.svg"
- alt="Kirby Vite Plugin" width="350" height="350">
+  <picture>
+      <source media="(prefers-color-scheme: dark)" srcset="./.github/logo-dark.svg">
+      <img src="./.github/logo-light.svg" alt="" />
+  </picture>
 </p>
 
-<h2 align="center">Use Kirby CMS together with Vite</h2>
+<h1 align="center">Kirby Vite</h1>
 
-## Getting started
-
-The easiest way to get started is using the [basic starter kit](https://github.com/arnoson/kirby-vite-basic-kit) or the [multi-page kit](https://github.com/arnoson/kirby-vite-multi-page-kit).
+Bundle your Kirby frontend assets with Vite. The easiest way to get started is using the [basic starter kit](https://github.com/arnoson/kirby-vite-basic-kit) or the [multi-page kit](https://github.com/arnoson/kirby-vite-multi-page-kit).
 
 ## Usage
 
@@ -74,25 +74,27 @@ export default ({ mode }) => ({
     // `main.js` as an entry and import the CSS in your JS file. In this case
     // you would use the JS file name: `vite()->css('main.js')`.
     rollupOptions: {
-      input: ['main.js', 'main.css']
-    }
+      input: ['main.js', 'main.css'],
+    },
   },
 
-  plugins: [kirby({
-    // By default Kirby's templates, snippets, controllers, models, layouts and
-    // everything inside the content folder will be watched and a full reload
-    // triggered. All paths are relative to Vite's root folder.
-    watch: [
-      '../site/(templates|snippets|controllers|models|layouts)/**/*.php',
-      '../content/**/*',
-    ],
-    // or disable watching
-    watch: false,
+  plugins: [
+    kirby({
+      // By default Kirby's templates, snippets, controllers, models, layouts and
+      // everything inside the content folder will be watched and a full reload
+      // triggered. All paths are relative to Vite's root folder.
+      watch: [
+        '../site/(templates|snippets|controllers|models|layouts)/**/*.php',
+        '../content/**/*',
+      ],
+      // or disable watching
+      watch: false,
 
-    // Where the automatically generated `vite.config.php` file should be
-    // placed. This has to match Kirby's config folder!
-    kirbyConfigDir: 'site/config' // default
-  })],
+      // Where the automatically generated `vite.config.php` file should be
+      // placed. This has to match Kirby's config folder!
+      kirbyConfigDir: 'site/config', // default
+    }),
+  ],
 })
 ```
 
